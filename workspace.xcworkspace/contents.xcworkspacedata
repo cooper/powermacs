@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "container:powermac-server/powermac-server.js">
+   </FileRef>
+   <FileRef
+      location = "container:powermac-server/template.tpl">
+   </FileRef>
+   <FileRef
+      location = "group:../../../../Volumes/powermacs/powermac.pl">
+   </FileRef>
+</Workspace>
