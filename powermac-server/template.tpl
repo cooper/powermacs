@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>{macCount} Power Macs</title>
 <style type="text/css">
 
 * {
@@ -19,7 +20,7 @@ body {
 }
 
 div.mac-container {
-    margin: 30px 0;
+    margin: 50px 0;
     border: 5px solid #333;
     width: 990px;
 }
@@ -27,6 +28,11 @@ div.mac-container {
 img.screenshot {
     max-width: 100%;
     display: block;
+    border-top: 5px solid #3CB371;
+}
+
+img.screenshot.offline {
+    border-top: 5px solid #CD5C5C;
 }
 
 div.header {
@@ -62,7 +68,8 @@ div.header div.icon span {
     left: 0px;
     width: 100%;
     text-align: center;
-    color: #666;
+    color: #777;
+    text-shadow: 0 0 2px #777;
 }
 
 div.header table {
@@ -83,6 +90,46 @@ a {
 
 a:hover {
     color: green;
+}
+
+.box-container {
+    background-color: #333;
+    color: white;
+    position: relative;
+}
+
+.box-bar {
+    width: 100%;
+    background-color: #3CB371;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    z-index: 1;
+}
+
+.box {
+    width: 200px;
+    height: 120px;
+    font-size: 40px;
+    overflow: hidden;
+    float: left;
+    position: relative;
+    text-align: center;
+    line-height: 80px;
+    margin: 0 65px;
+}
+
+.box div {
+    width: 180px;
+    font-size: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
 }
 
 </style>
@@ -117,8 +164,15 @@ a:hover {
 <body>
 <div id="container">
 
-{for mac in macs}
+<div class="box-container">
+    <div class="box">{macCount}<div>Power Macs</div></div>
+    <div class="box">{speed}<div>CPU speed</div></div>
+    <div class="box">{memory}<div>RAM</div></div>
+    <div style="clear: both;"></div>
+    <div class="box-bar"></div>
+</div>
 
+{for mac in macs}
 <div class="mac-container">
     <div class="header">
         <table>
@@ -138,9 +192,8 @@ a:hover {
             <a style="font-weight: normal;" href="http://{mac.dir}.comcast.rlygd.net">{mac.name}</a>
         </h1>
     </div>
-    <img src="{mac.dir}/screenshot.jpg" alt="{mac.dir}" class="screenshot" />
+    <img src="{mac.dir}/screenshot.jpg" alt="{mac.dir}" class="screenshot{if mac.offline} offline{/if}" />
 </div>
-
 {/for}
 
 <div style="text-align: center; margin: 50px;">
