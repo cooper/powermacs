@@ -136,9 +136,8 @@ a:hover {
 <script type="text/javascript" src="web/mootools.js"></script>
 <script type="text/javascript">
     var screenshots = [];
-    var howOften    = 2000;
+    var howOften    = 5000;
     document.addEvent('domready', function () {
-        setInterval(reloadImages, 1000);
         screenshots = $$('img.screenshot');
         var timeBetween = howOften / screenshots.length;
         var x = 0;

@@ -15,6 +15,7 @@ console.log('Total memory: ' + context.memory);
 console.log('Total speed:  '  + context.speed);
 server.listen(8080);
 var serve = require("serve-static")('.');
+var finalhandler = require('finalhandler');
 console.log("Server started");
 
 function handler (request, response) {
@@ -25,8 +26,8 @@ function handler (request, response) {
         
         // it's been a while.
         var date = new Date();
-        if (date.getTime() - lastCreate.getTime() > 30) {
-            createContext();
+        if (date.getTime() - lastCreate.getTime() > 30000) {
+            context = createContext();
             lastCreate = date;
         }
         
@@ -37,9 +38,8 @@ function handler (request, response) {
     }
     
     // other resource.
-    serve(request, response, function (err) {
-        response.end();
-    });
+    var done = finalhandler(request, response);
+    serve(request, response, done);
     
 }
 
