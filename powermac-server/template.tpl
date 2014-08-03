@@ -171,6 +171,7 @@ div.box div {
         var timeBetween = howOften / screenshots.length;
         var x = 0;
         screenshots.each(function (img) {
+            if (img.hasClass('offline')) return;
             setTimeout(function () {
                 setInterval(function () { reloadImage(img); }, howOften);
             }, x);
