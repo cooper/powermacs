@@ -162,7 +162,7 @@ div.box div {
 }
 
 </style>
-<script type="text/javascript" src="web/mootools.js"></script>
+<script type="text/javascript" src="web/scale/mootools.js"></script>
 <script type="text/javascript">
     var screenshots = [];
     var howOften    = 5000;
@@ -234,7 +234,7 @@ div.box div {
 {/for}
 
 <div style="text-align: center; margin: 50px;">
-    <img src="web/made_on_a_mac.png" alt="Made on a Mac" /><br />
+    <img src="web/scale/made_on_a_mac.png" alt="Made on a Mac" /><br />
     <a href="http://nodejs.org" style="color: #bbb; font-size: 12px;">#webscale</a>
 </div>
 </div>
