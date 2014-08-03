@@ -23,16 +23,45 @@ div.mac-container {
     margin: 50px 0;
     border: 5px solid #333;
     width: 990px;
+    background-color: #333;
+}
+
+div.screenshot-container {
+    position: relative;
+    border-top: 5px solid #3CB371;
+}
+
+div.screenshot-container.offline {
+    border-top: 5px solid #CD5C5C;
+}
+
+div.screenshot-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+div.last-seen {
+    position: absolute;
+    top: 40%;
+    left: 320px;
+    width: 350px;
+    height: 100px;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+    background-color: #333; /*rgba(51, 51, 51, 0.8);*/
+    border: 5px solid #CD5C5C;
 }
 
 img.screenshot {
     max-width: 100%;
     display: block;
-    border-top: 5px solid #3CB371;
-}
-
-img.screenshot.offline {
-    border-top: 5px solid #CD5C5C;
 }
 
 div.header {
@@ -92,13 +121,13 @@ a:hover {
     color: green;
 }
 
-.box-container {
+div.box-container {
     background-color: #333;
     color: white;
     position: relative;
 }
 
-.box-bar {
+div.box-bar {
     width: 100%;
     background-color: #3CB371;
     position: absolute;
@@ -108,7 +137,7 @@ a:hover {
     z-index: 1;
 }
 
-.box {
+div.box {
     width: 200px;
     height: 120px;
     font-size: 40px;
@@ -120,7 +149,7 @@ a:hover {
     margin: 0 65px;
 }
 
-.box div {
+div.box div {
     width: 180px;
     font-size: 20px;
     height: 20px;
@@ -191,7 +220,16 @@ a:hover {
             <a style="font-weight: normal;" href="http://{mac.dir}.comcast.rlygd.net">{mac.name}</a>
         </h1>
     </div>
-    <img src="{mac.dir}/screenshot.jpg" alt="{mac.dir}" class="screenshot{if mac.offline} offline{/if}" />
+    {if mac.offline}
+        <div class="screenshot-container offline">
+        <img src="{mac.dir}/screenshot.jpg" alt="{mac.dir}" class="screenshot offline" />
+        <div class="screenshot-overlay"></div>
+        <div class="last-seen">Last seen {mac.time}<br />{mac.date}</div>
+    {else}
+        <div class="screenshot-container">
+        <img src="{mac.dir}/screenshot.jpg" alt="{mac.dir}" class="screenshot" />
+    {/if}
+    </div>
 </div>
 {/for}
 

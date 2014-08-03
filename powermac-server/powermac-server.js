@@ -6,7 +6,12 @@ var fs          = require("fs"),
     server      = http.createServer(handler),
     template    = fs.readFileSync("template.tpl"),
     lastCreate  = new Date();
-    context     = {};
+    context     = {},
+    months      = [
+        'January', 'February', 'March', 'April',
+        'May', 'June','July', 'August', 'September',
+        'October', 'November', 'December'
+    ];
     
 process.chdir('/home/powermacs');
 
@@ -102,18 +107,24 @@ function createContext () {
         
         // check the time.
         var offline = false;
-        var time = macdir + '/last_screenshot';
-        time = fs.existsSync(time) ? fs.readFileSync(time) : 0;
-        if ((Date.now() / 1000) - time > 300) offline = true;
+        var last = macdir + '/last_screenshot';
+        last = fs.existsSync(last) ? fs.readFileSync(last) : 0;
+        if ((Date.now() / 1000) - last > 300) offline = true;
         
         // make the name prettier.
         var name  = macdir;
         var match = name.match(/^.*Power-Mac-(.+)\.local$/i);
         if (match) name = match[1].split('-').join(' ');
         
+        // format dates.
+        var d    = new Date(last * 1000);
+        var date = months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+        var time = d.getHours() + ':' + ('0' + d.getMinutes()).slice(-2);
+        
         macs.push({
             dir:        macdir,
-            date:       fs.readFileSync(macdir + '/last_screenshot'),
+            time:       time,
+            date:       date,
             hw:         hardware,
             icon:       icon,
             name:       name,
