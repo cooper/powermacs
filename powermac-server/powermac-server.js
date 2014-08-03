@@ -151,10 +151,12 @@ function createContext () {
     else prettySpeed = totalSpeed + ' MHz';
     
     // sort by CPU; put offline ones at bottom.
-    macs.sort(function (mac) {
-        var num = mac.speedx;
-        if (mac.offline) num += 5000;
-        return num;
+    macs.sort(function (mac1, mac2) {
+        var num1 = mac1.speedx;
+        if (mac1.offline) num1 -= 5000;
+        var num2 = mac2.speedx;
+        if (mac2.offline) num2 -= 5000;
+        return num2 - num1;
     });
         
     return {
