@@ -193,8 +193,8 @@ div.box div {
 <div id="container">
 
 <div class="box-container">
-    <div class="box">{macCount}<div>Power Macs</div></div>
-    <div class="box">{speed}<div>CPU speed</div></div>
+    <div class="box">{macCount}<div>Macs</div></div>
+    <div class="box">{speed}<div>CPU</div></div>
     <div class="box">{memory}<div>RAM</div></div>
     <div style="clear: both;"></div>
     <div class="box-bar"></div>

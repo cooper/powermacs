@@ -96,6 +96,7 @@ function createContext () {
             });
             
         }
+        var speedTimesCPUs = speed * numberOfCPUs;
         
         // OS file.
         var os = macdir + '/os';
@@ -131,21 +132,31 @@ function createContext () {
             os:         os,
             memory:     memory,
             speed:      speed,
-            offline:    offline
+            offline:    offline,
+            speedx:     speedTimesCPUs
         });
         
         totalMemory += memory;
-        totalSpeed  += speed * numberOfCPUs;
+        totalSpeed  += speedTimesCPUs;
     });
-    
+
+    // format memory.
     var prettyMemory;
     if (totalMemory > 1024) prettyMemory = (totalMemory / 1024) + ' GB';
     else prettyMemory = totalMemory + ' MB';
-    
+
+    // format speed.
     var prettySpeed;
     if (totalSpeed > 1000) prettySpeed = (totalSpeed / 1000) + ' GHz';
     else prettySpeed = totalSpeed + ' MHz';
     
+    // sort by CPU; put offline ones at bottom.
+    macs.sort(function (mac) {
+        var num = mac.speedx;
+        if (mac.offline) num += 5000;
+        return num;
+    });
+        
     return {
         macs:       macs,
         macCount:   macs.length,
