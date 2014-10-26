@@ -75,14 +75,13 @@ while (1) {
 }
 
 sub get_hardware_info {
-    my @lines = split /\n/, `system_profiler SPHardwareDataType`;
+    my @lines = split /\n/, `system_profiler -detailLevel mini SPHardwareDataType`;
     my @good;
     foreach (@lines) {
         s/^\s+//g;
         s/\s+$//g;
         next unless length;
         next if /^Hardware/;
-        next if /UUID/ || /serial/i || /sales/i;
         push @good, $_;
     }
     return join "\n", @good;
