@@ -235,7 +235,7 @@ div.box div {
 {/for}
 
 <div style="text-align: center; margin: 50px;">
-    <a href="http://store.apple.com">"
+    <a href="http://store.apple.com">
     <img style="height: 50px" src="web/scale/made-on-a-mac.png" alt="Made on a Mac" />
     </a><br />
     <a href="http://nodejs.org" style="color: #bbb; font-size: 12px;">#webscale</a>
