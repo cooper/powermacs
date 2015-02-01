@@ -178,7 +178,7 @@ div.box div {
             x += timeBetween;
         });
     })
-    
+
     function reloadImage (img) {
         var time = new Date().getTime();
         var real = img.retrieve('real-src');
@@ -238,7 +238,10 @@ div.box div {
     <a href="http://store.apple.com">
     <img style="height: 50px" src="web/scale/made-on-a-mac.png" alt="Made on a Mac" />
     </a><br />
-    <a href="http://nodejs.org" style="color: #bbb; font-size: 12px;">#webscale</a>
+    <span style="font-size: 12px; color: #bbb;">
+        Powered by <a href="http://www.iis.net" style="color: #aaa;">IIS</a>
+        <a href="http://nodejs.org" style="color: #aaa;">#webscale</a>
+    </span>
 </div>
 </div>
 </body>
