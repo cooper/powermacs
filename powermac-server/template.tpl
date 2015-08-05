@@ -218,7 +218,7 @@ div.box div {
         </div>
         <h1>
             Power Mac<br />
-            <a style="font-weight: normal;" href="http://{mac.dir}.comcast.rlygd.net">{mac.name}</a>
+            <a style="font-weight: normal;" href="machine/{mac.dir}/">{mac.name}</a>
         </h1>
     </div>
     {if mac.offline}

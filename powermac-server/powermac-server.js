@@ -13,7 +13,7 @@ var fs          = require("fs"),
         'October', 'November', 'December'
     ];
     
-process.chdir('/home/powermacs');
+process.chdir('..');
 
 context = createContext();
 console.log('Total memory: ' + context.memory);
