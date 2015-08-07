@@ -142,13 +142,17 @@ function createContext () {
 
     // format memory.
     var prettyMemory;
-    if (totalMemory > 1024) prettyMemory = (totalMemory / 1024) + ' GB';
-    else prettyMemory = totalMemory + ' MB';
+    if (totalMemory > 1024)
+        prettyMemory = parseFloat((totalMemory / 1024).toFixed(2)) + ' GB';
+    else
+        prettyMemory = totalMemory + ' MB';
 
     // format speed.
     var prettySpeed;
-    if (totalSpeed > 1000) prettySpeed = (totalSpeed / 1000) + ' GHz';
-    else prettySpeed = totalSpeed + ' MHz';
+    if (totalSpeed > 1000)
+        prettySpeed = parseFloat((totalSpeed / 1000).toFixed(2)) + ' GHz';
+    else
+        prettySpeed = totalSpeed + ' MHz';
     
     // sort by CPU; put offline ones at bottom.
     macs.sort(function (mac1, mac2) {
